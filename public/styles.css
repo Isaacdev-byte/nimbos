@@ -97,7 +97,7 @@ body::after {
 /* LAYOUT E CABECALHO ----------------------------------------- */
 .wrap { width: 100%; max-width: 42rem; margin: 0 auto; padding: 2rem 1rem; }
 
-header { text-align: center; }
+header { text-align: center; position: relative; }
 header h1 {
   margin: 0;
   font-size: clamp(2.2rem, 7vw, 3.2rem);
@@ -116,14 +116,36 @@ header p { margin: 0.4rem 0 0; color: var(--texto-suave); }
   animation: pairar 4s ease-in-out infinite;
 }
 
+.tema {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--texto);
+  background: var(--vidro);
+  border: 1px solid var(--borda);
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.tema:active { transform: scale(0.9) rotate(20deg); }
+.tema:focus-visible {outline: 3px solid var(--destaque); outline-offset: 3px; }
+
 /* VIDRO --------------------------------------- */
-.search,
-.panel {
+.search,.panel {
   background: var(--vidro);
   border: 1px solid var(--borda);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--sombra);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 /* Se o navegador nao suportar o desfoque, usa um fundo mais opaco. */
@@ -269,6 +291,7 @@ footer a:hover { color: var(--texto); }
   }
   input[type="search"]:hover { border-color: var(--destaque); }
   .c:hover { transform: translateY(-4px); background: var(--vidro-forte); border-color: var(--destaque); }
+  .tema:hover {transform: rotate(18deg) scale(1.08); background: var(--vidro-forte); border-color: var(--destaque); }
 }
 
 /* TELAS PEQUENAS ------------------------------------------------ */

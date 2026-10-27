@@ -60,3 +60,31 @@ formulario.addEventListener("submit", async function (evento) {
     }
   }
 });
+// ---------- Tema claro / escuro ----------
+const raiz = document.documentElement; // a tag <html>
+const botaoTema = document.getElementById("btn-tema");
+
+function aplicarTema(tema) {
+  raiz.dataset.tema = tema;
+
+  // O botao para alterar entre temas.
+  botaoTema.firstElementChild.textContent = tema === "claro" ? "🌙" : "☀️";
+  botaoTema.setAttribute(
+    "aria-label",
+    tema === "claro" ? "Mudar para o tema escuro" : "Mudar para o tema claro"
+  );
+}
+
+botaoTema.addEventListener("click", function () {
+  const novoTema = raiz.dataset.tema === "claro" ? "escuro" : "claro";
+  aplicarTema(novoTema);
+
+  try {
+    localStorage.setItem("nimbos-tema", novoTema);
+  } catch (erro) {
+    // Se o navegador nao permitir guardar (ex.: aba anonima),// o tema continua trocando, so nao fica salvo.
+  }
+});
+
+// Ao carregar: o script do <head> ja aplicou o tema salvo (ou nada, e entao e escuro).
+aplicarTema(raiz.dataset.tema === "claro" ? "claro" : "escuro");
