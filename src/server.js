@@ -5,7 +5,7 @@ const path = require("path");
 const climaRoutes = require("./routes/clima");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Serve os arquivos de public/ (index.html, styles.css, app.js)
 app.use(express.static(path.join(__dirname, "..", "public")));

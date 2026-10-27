@@ -2,9 +2,12 @@
   "name": "Nimbos",
   "version": "1.0.0",
   "description": "Site para consultar o clima por cidade ou localidade.\r Status: estrutura inicial do front-end (sem integração ainda).",
-  "main": "index.js",
+  "main": "scr/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
